@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Yas 💜</title>
+
+  <!-- 
+    FONTES DO GOOGLE FONTS
+    Por que uma biblioteca externa aqui?
+    O Google Fonts é só um link de CSS hospedado pelo Google — não é JavaScript,
+    não roda código nenhum na sua máquina, só carrega os arquivos das fontes.
+    Usamos duas fontes:
+    - "Cormorant Garamond": uma serifada elegante, para a frase principal (o "grito" do site)
+    - "Quicksand": uma sans-serif arredondada e fofa, para botão e textos menores
+    Se preferir não depender de internet, dá para baixar os arquivos .woff2 e
+    trocar esse <link> por um @font-face local — explico isso no guia de edição.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Canvas onde as estrelinhas de fundo são desenhadas (controlado pelo script.js) -->
+  <canvas id="star-field"></canvas>
+
+  <!-- Container onde os corações flutuantes vão nascer via JavaScript -->
+  <div id="hearts-container" aria-hidden="true"></div>
+
+  <!-- ===================== TELA PRINCIPAL (HERO) ===================== -->
+  <main class="hero" id="hero">
+
+    <!-- Corações decorativos fixos, desenhados direto em CSS, ao redor da frase -->
+    <span class="heart-deco heart-deco--1" aria-hidden="true">♥</span>
+    <span class="heart-deco heart-deco--2" aria-hidden="true">♥</span>
+    <span class="heart-deco heart-deco--3" aria-hidden="true">♥</span>
+    <span class="heart-deco heart-deco--4" aria-hidden="true">♥</span>
+    <span class="heart-deco heart-deco--5" aria-hidden="true">♥</span>
+
+    <div class="hero__content">
+      <!-- 
+        FRASE PRINCIPAL
+        Cada linha está numa tag separada para controlar a animação de entrada
+        de forma independente (uma linha aparece depois da outra).
+      -->
+      <h1 class="hero__title" id="mensagem-principal">
+        <span class="hero__line hero__line--1">vc é a pessoa mais linda</span>
+        <span class="hero__line hero__line--2">que já conheci,</span>
+        <span class="hero__line hero__line--3">
+          vc é incrível <span class="hero__name" id="nome-destaque">Yas</span><span class="hero__dot">.</span>
+        </span>
+      </h1>
+
+      <p class="hero__subtitle">um cantinho da internet feito só pra você</p>
+
+      <!-- Seta indicando que dá pra rolar a página para ver a foto -->
+      <button class="scroll-hint" id="scroll-hint" aria-label="Rolar para ver mais">
+        <span class="scroll-hint__arrow">⌄</span>
+      </button>
+    </div>
+  </main>
+
+  <!-- ===================== SEÇÃO DA FOTO ===================== -->
+  <section class="photo-section" id="foto">
+    <p class="photo-section__eyebrow">olha só</p>
+    <h2 class="photo-section__title">essa foto linda</h2>
+
+    <div class="photo-frame" id="photo-frame">
+      <!-- 
+        ===================================================================
+        👉 COLOQUE SUA FOTO AQUI 👈
+        ===================================================================
+        1. Coloque o arquivo da foto dentro da pasta "assets/"
+        2. Renomeie o arquivo para "foto.jpg" (ou troque o "src" abaixo
+           para o nome que você usar, ex: "assets/minha-foto.png")
+        3. Pronto — a foto vai aparecer com a moldura roxa automaticamente.
+
+        Por enquanto, esta é uma imagem temporária (placeholder) só para você
+        ver como o layout fica. Troque o "src" assim que tiver a foto real.
+        ===================================================================
+      -->
+      <img
+        src="assets/foto.png.jpeg"
+        alt="Foto da Yas"
+        class="photo-frame__img"
+        id="foto-yas"
+      />
+      <div class="photo-frame__glow" aria-hidden="true"></div>
+    </div>
+
+    <p class="photo-section__caption">a pessoa mais linda que já conheci, no formato de foto</p>
+  </section>
+
+  <!-- ===================== SEÇÃO DO BOTÃO ===================== -->
+  <section class="button-section">
+    <p class="button-section__text">clica aí, vai</p>
+    <button class="love-button" id="love-button">
+      <span>💜 Clique aqui 💜</span>
+    </button>
+    <p class="button-section__hint" id="button-counter"></p>
+  </section>
+
+  <footer class="footer">
+    <p>feito com <span class="footer__heart">♥</span> para a Yas</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
